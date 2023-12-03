@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{% url 'accounts:logout' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="logout">
+</form>
+    <div class="main">
+        {% if todo_list %}
+    <ul>
+    {% for todo in todo_list %}
+        <li><a href="{% url 'todos:detail' todo.id %}">{{todo.title}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No todos left.</p>
+{% endif %}
+    </div>
+
+    <div>
+        <form action="{% url 'todos:new_todo' %}" method="GET">
+            {% csrf_token %}
+
+            <h2> Add New todo </h2>
+            
+            <input type="submit" value="add">
+
+        </form>
+
+        <form action="{% url 'todos:new_todo_list' %}" method="GET">
+            {% csrf_token %}
+
+            <h2> Add New Todo List </h2>
+            
+            <input type="submit" value="add">
+
+        </form>
+
+
+    </div> 
+    
+
+    {% endblock %}

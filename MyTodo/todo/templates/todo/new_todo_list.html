@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>New Todo List</h1>
+<form method="POST" action="{% url 'todos:new_todo_list' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Save</button>
+</form>
+<script src="/static/slugify.js0"></script> 
+{% endblock %}
+```

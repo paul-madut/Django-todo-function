@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>New Todo</h1>
+<form method="POST" action="{% url 'todos:new_todo' %}">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}
